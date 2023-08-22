@@ -52,5 +52,5 @@ jobs:
         # types-Deprecated types-PyYAML types-requests types-simplejson isort types-pytz types-python-dateutil types-orjson
       
       - name: Run mypy cdd
-        run: mypy ./dmba
+        run: python3 -m mypy dmba
 
