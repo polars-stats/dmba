@@ -11,7 +11,7 @@ from typing import Any, Union
 import pandas as pd
 
 
-DATA_DIR = Path(__file__).parent / 'data'
+DATA_DIR = Path(__file__).parent.parent / 'data'
 
 
 def load_data(name: str, **kwargs: Any) -> Union[pd.DataFrame, pd.Series]:
