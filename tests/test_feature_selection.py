@@ -5,7 +5,6 @@ Applications in Python"
 (c) 2019-2023 Galit Shmueli, Peter C. Bruce, Peter Gedeck
 """
 
-import unittest
 from math import prod
 from typing import Any, List
 
