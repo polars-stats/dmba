@@ -42,7 +42,7 @@ Repository = "https://github.com/polars-stats/dmba"
 version = { attr = "dmba.__init__.__version__" }
 
 [tool.setuptools.packages.find]
-include = ["dmba", "data"]
+include = ["dmba"]
 
 [tool.setuptools.package-data]
 dmba = ["data/*.csv.gz", "data/*.zip"]
