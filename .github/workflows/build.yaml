@@ -17,11 +17,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: sudo apt install -y graphviz
-      - run: python --version
-      - run: pip install --upgrade pip 
-      - run: pip install pytest matplotlib polars scikit-learn graphviz
+      - run: python3 --version
+      - run: pip3 install --upgrade pip 
+      - run: pip3 install .
       - run: pytest -rP -p no:cacheprovider
-      - run: pip install ipython
+      - run: pip3 install ipython
       - run: pytest -rP -p no:cacheprovider
 
   ruff:
