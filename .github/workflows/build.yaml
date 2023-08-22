@@ -33,9 +33,9 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dependencies
-        run: pip install ruff
+        run: pip3 install ruff
       - name: Run ruff
-        run: cd ./src && ruff .
+        run: python3 -m ruff dmba
 
   mypy:
     runs-on: ubuntu-latest
