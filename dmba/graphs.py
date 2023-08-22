@@ -84,10 +84,11 @@ def gains_chart(gains: pd.Series, color: str = 'C0', label: Optional[str] = None
     return ax
 
 
-def plot_decision_tree(decision_tree: Any, *, feature_names: Optional[list[str]] = None,
-                     class_names: Optional[list[str]] = None, impurity: bool = False,
-                     label: str = 'root', max_depth: Optional[int] = None, rotate: bool = False,
-                     pdfFile: Optional[os.PathLike] = None) -> Any:
+def plot_decision_tree(
+    decision_tree: Any, *, feature_names: Optional[list[str]] = None,
+    class_names: Optional[list[str]] = None, impurity: bool = False,
+    label: str = 'root', max_depth: Optional[int] = None, rotate: bool = False,
+    pdf_file: Optional[os.PathLike] = None) -> Any:
     """ Create a plot of the scikit-learn decision tree and show in the Jupyter notebook
 
     Input:
@@ -98,11 +99,11 @@ def plot_decision_tree(decision_tree: Any, *, feature_names: Optional[list[str]]
         label (optional): only show labels at the root
         max_depth (optional): limit
         rotate (optional): rotate the layout of the graph
-        pdfFile (optional): provide pathname to create a PDF file of the graph
+        pdf_file (optional): provide pathname to create a PDF file of the graph
     """
     if not HAS_GRAPHVIZ:
         return 'You need to install graphviz to visualize decision trees'
-    if not HAS_IMAGE and not pdfFile:
+    if not HAS_IMAGE and not pdf_file:
         return 'You need to install Image and/or graphviz to visualize decision trees'
     if class_names is not None:
         class_names = [str(s) for s in class_names]  # convert to strings
@@ -112,8 +113,8 @@ def plot_decision_tree(decision_tree: Any, *, feature_names: Optional[list[str]]
                     max_depth=max_depth, rotate=rotate)
     graph = graphviz.Source(dot_data.getvalue())
     with TemporaryDirectory() as tempdir:
-        if pdfFile is not None:
-            graph.render('dot', directory=tempdir, format='pdf', outfile=pdfFile)
+        if pdf_file is not None:
+            graph.render('dot', directory=tempdir, format='pdf', outfile=pdf_file)
         if HAS_IMAGE:
             return Image(graph.render('dot', directory=tempdir, format='png'))
         return None
