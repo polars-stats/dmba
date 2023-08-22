@@ -15,7 +15,9 @@ from .feature_selection import backward_elimination, exhaustive_search, forward_
 from .graphs import gains_chart, lift_chart, plot_decision_tree, text_decision_tree
 from .metric import AIC_score, BIC_score, adjusted_r2_score, classification_summary, regression_summary
 from .text_mining import print_term_document_matrix
-from .version import __version__
+
+
+__version__ = '0.2.4'
 
 if 'google.colab' in sys.modules:
     print('Colab environment detected.')

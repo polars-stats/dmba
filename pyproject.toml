@@ -30,7 +30,7 @@ dynamic = ["version"]
 Repository = "https://github.com/polars-stats/dmba"
 
 [tool.setuptools.dynamic]
-version = { attr = "version.__version__" }
+version = { attr = "__init__.__version__" }
 
 [tool.setuptools.package-data]
 dmba = ["data/*.csv.gz", "data/*.zip"]
