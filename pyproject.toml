@@ -21,7 +21,6 @@ dependencies = [
     "matplotlib",
     "numpy",
     "pandas",
-    "polars",
     "scikit-learn",
     "scipy",
 ]
@@ -43,7 +42,7 @@ Repository = "https://github.com/polars-stats/dmba"
 version = { attr = "dmba.__init__.__version__" }
 
 [tool.setuptools.packages.find]
-include = ["dmba"]
+include = ["dmba", "data"]
 
 [tool.setuptools.package-data]
 dmba = ["data/*.csv.gz", "data/*.zip"]
