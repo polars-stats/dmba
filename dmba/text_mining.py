@@ -5,13 +5,14 @@ Applications in Python"
 (c) 2019-2023 Galit Shmueli, Peter C. Bruce, Peter Gedeck
 """
 
-import pandas as pd
+from polars import DataFrame
 import scipy.sparse as sp
 from sklearn.feature_extraction.text import CountVectorizer
 
 
 def print_term_document_matrix(
-        count_vect: CountVectorizer, counts: sp.spmatrix) -> None:
+        count_vect: CountVectorizer,  # noqa: ARG001
+        counts: sp.spmatrix) -> None:
     """ Print term-document matrix created by the CountVectorizer
     Input:
         count_vect: scikit-learn Count vectorizer
@@ -19,5 +20,4 @@ def print_term_document_matrix(
     """
     shape = counts.shape
     columns = [f'S{i}' for i in range(1, shape[0] + 1)]
-    print(pd.DataFrame(data=counts.toarray().transpose(),
-                       index=count_vect.get_feature_names_out(), columns=columns))
+    print(DataFrame(data=counts.toarray().transpose(), schema=columns))

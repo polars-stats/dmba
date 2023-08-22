@@ -8,7 +8,7 @@ Applications in Python"
 from contextlib import redirect_stdout
 from io import StringIO
 
-import pandas as pd
+# import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 
 from dmba import print_term_document_matrix
@@ -22,13 +22,13 @@ class TestTextMining:
         count_vect = CountVectorizer()
         counts = count_vect.fit_transform(text)
 
-        pd.set_option('display.width', 100)
-        pd.set_option('display.max_columns', 20)
+        # pd.set_option('display.width', 100)
+        # pd.set_option('display.max_columns', 20)
 
         out = StringIO()
         with redirect_stdout(out):
             print_term_document_matrix(count_vect, counts)
         s = out.getvalue()
-        assert 'S1  S2  S3' in s
-        assert 'first      1   0   0' in s
-        assert 'the        1   0   1' in s
+        assert 'S1  ┆ S2  ┆ S3' in s
+        assert '1   ┆ 0   ┆ 0' in s
+        assert '1   ┆ 0   ┆ 1' in s
