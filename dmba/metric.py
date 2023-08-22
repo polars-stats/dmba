@@ -1,9 +1,10 @@
-'''
+"""
 Utility functions for "Data Mining for Business Analytics: Concepts, Techniques, and
 Applications in Python"
 
 (c) 2019-2023 Galit Shmueli, Peter C. Bruce, Peter Gedeck
-'''
+"""
+
 import math
 from typing import Any, List, Optional
 
@@ -38,7 +39,7 @@ def AIC_score(y_true: Vector, y_pred: Vector, model: Optional[Any] = None, df: O
 
     One of model or df is requried
     """
-    p = getDegreesOfFreedom(model=model, df=df)
+    p = get_degrees_of_freedom(model=model, df=df)
     n = len(y_pred)
     resid = np.array(y_true) - np.array(y_pred)
     sse = np.sum(resid ** 2)
@@ -46,7 +47,7 @@ def AIC_score(y_true: Vector, y_pred: Vector, model: Optional[Any] = None, df: O
     return n * math.log(sse / n) + constant + 2 * (p + 1)
 
 
-def getDegreesOfFreedom(model: Optional[Any] = None, df: Optional[int] = None) -> int:
+def get_degrees_of_freedom(model: Optional[Any] = None, df: Optional[int] = None) -> int:
     if model is not None:
         p = len(model.coef_) + 1
     elif df is not None:
@@ -64,13 +65,13 @@ def BIC_score(y_true: Vector, y_pred: Vector, model: Optional[Any] = None, df: O
         model: predictive model
         df (optional): degrees of freedom of model
     """
-    p = getDegreesOfFreedom(model=model, df=df)
+    p = get_degrees_of_freedom(model=model, df=df)
     aic = AIC_score(y_true, y_pred, model=model, df=df)
     n = len(y_pred)
     return aic - 2 * (p + 1) + math.log(n) * (p + 1)
 
 
-def regressionSummary(y_true: Vector, y_pred: Vector) -> None:
+def regression_summary(y_true: Vector, y_pred: Vector) -> None:
     """ print regression performance metrics
 
     Input:
@@ -104,7 +105,7 @@ def _toArray(y: Vector) -> np.ndarray:
     return ya
 
 
-def classificationSummary(y_true: Vector, y_pred: Vector, class_names: Optional[List[str]] = None) -> None:
+def classification_summary(y_true: Vector, y_pred: Vector, class_names: Optional[List[str]] = None) -> None:
     """ Print a summary of classification performance
 
     Input:
@@ -112,13 +113,13 @@ def classificationSummary(y_true: Vector, y_pred: Vector, class_names: Optional[
         y_pred: predicted values
         class_names (optional): list of class names
     """
-    confusionMatrix = confusion_matrix(y_true, y_pred)
+    confusion_matrix = confusion_matrix(y_true, y_pred)
     accuracy = accuracy_score(y_true, y_pred)
 
     print(f'Confusion Matrix (Accuracy {accuracy:.4f})\n')
 
     # Pretty-print confusion matrix
-    cm = confusionMatrix
+    cm = confusion_matrix
 
     labels = class_names
     if labels is None:
