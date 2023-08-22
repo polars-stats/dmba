@@ -21,9 +21,9 @@ jobs:
       - run: pip3 install --upgrade pip 
       - run: pip3 install .
       - run: pip3 install pytest
-      - run: python3 -m pytest -rP -p no:cacheprovider
+      - run: python3 -m pytest -p no:cacheprovider
       - run: pip3 install ipython
-      - run: python3 -m pytest -rP -p no:cacheprovider
+      - run: python3 -m pytest -p no:cacheprovider
 
   ruff:
     runs-on: ubuntu-latest
