@@ -48,6 +48,13 @@ include = ["dmba"]
 [tool.setuptools.package-data]
 dmba = ["data/*.csv.gz", "data/*.zip"]
 
+[tool.pytest.ini_options]
+minversion = "7.3"
+addopts = "-rP"
+testpaths = [
+    "tests"
+]
+
 [tool.mypy]
 warn_return_any = false
 warn_unused_configs = true
@@ -94,10 +101,3 @@ target-version = "py311"
 [tool.ruff.per-file-ignores]
 "*/collaborative_model/**/*.py" = ["PLR0912", "PLR0915", "PLW2901"]
 "*/tests/*.py" = ["S1", "FBT", "PLR"]
-
-[tool.pytest.ini_options]
-minversion = "7.3"
-addopts = "-rP"
-testpaths = [
-    "tests"
-]
