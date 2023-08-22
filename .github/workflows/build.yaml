@@ -53,4 +53,3 @@ jobs:
       
       - name: Run mypy cdd
         run: python3 -m mypy dmba
-
