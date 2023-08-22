@@ -1,10 +1,10 @@
-'''
+"""
 Utility functions for "Data Mining for Business Analytics: Concepts, Techniques, and
 Applications in Python"
 
 (c) 2019-2023 Galit Shmueli, Peter C. Bruce, Peter Gedeck
-'''
-import unittest
+"""
+
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -13,8 +13,8 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 
-from dmba import gainsChart, liftChart, textDecisionTree
-from dmba.graphs import plotDecisionTree
+from dmba import gainsChart, liftChart, text_decision_tree
+from dmba.graphs import plot_decision_tree
 
 try:
     from IPython.display import Image
@@ -24,7 +24,7 @@ except ImportError:
 
 
 
-class TestGraphs(unittest.TestCase):
+class TestGraphs:
     def test_liftChart(self) -> None:
         data = pd.Series([7] * 10 + [2.5] * 10 + [0.5] * 10 + [0.25] * 20 + [0.1] * 50)
         ax = liftChart(data)
@@ -35,7 +35,7 @@ class TestGraphs(unittest.TestCase):
         ax = gainsChart(data)
         assert ax is not None
 
-    def test_textDecisionTree(self) -> None:
+    def test_text_decision_tree(self) -> None:
         iris = load_iris()
         X = iris.data
         y = iris.target
@@ -44,7 +44,7 @@ class TestGraphs(unittest.TestCase):
         estimator = DecisionTreeClassifier(max_leaf_nodes=3, random_state=0)
         estimator.fit(X_train, y_train)
 
-        representation = textDecisionTree(estimator)
+        representation = text_decision_tree(estimator)
         # print(representation)
         assert 'node=0 test node' in representation
         assert 'node=1 leaf node' in representation
@@ -61,7 +61,7 @@ class TestGraphs(unittest.TestCase):
         estimator = DecisionTreeClassifier(max_leaf_nodes=3, random_state=0)
         estimator.fit(X_train, y_train)
 
-        representation = plotDecisionTree(estimator)
+        representation = plot_decision_tree(estimator)
         if hasImage:
             assert type(representation) == Image
         else:
@@ -70,6 +70,6 @@ class TestGraphs(unittest.TestCase):
         with TemporaryDirectory() as tempdir:
             pdfFile = Path(tempdir) / 'tree.pdf'
             assert not pdfFile.exists()
-            representation = plotDecisionTree(estimator, pdfFile=pdfFile)
+            representation = plot_decision_tree(estimator, pdfFile=pdfFile)
             assert pdfFile.exists()
             assert b'PDF' in pdfFile.read_bytes()

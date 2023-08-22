@@ -6,7 +6,7 @@ Applications in Python"
 """
 
 import math
-from typing import Any, List, Optional
+from typing import Any, Optional
 
 import numpy as np
 from sklearn.metrics import accuracy_score, confusion_matrix, mean_squared_error, r2_score
@@ -105,7 +105,7 @@ def _toArray(y: Vector) -> np.ndarray:
     return ya
 
 
-def classification_summary(y_true: Vector, y_pred: Vector, class_names: Optional[List[str]] = None) -> None:
+def classification_summary(y_true: Vector, y_pred: Vector, class_names: Optional[list[str]] = None) -> None:
     """ Print a summary of classification performance
 
     Input:
@@ -113,13 +113,13 @@ def classification_summary(y_true: Vector, y_pred: Vector, class_names: Optional
         y_pred: predicted values
         class_names (optional): list of class names
     """
-    confusion_matrix = confusion_matrix(y_true, y_pred)
+    confusion_matrix_ = confusion_matrix(y_true, y_pred)
     accuracy = accuracy_score(y_true, y_pred)
 
     print(f'Confusion Matrix (Accuracy {accuracy:.4f})\n')
 
     # Pretty-print confusion matrix
-    cm = confusion_matrix
+    cm = confusion_matrix_
 
     labels = class_names
     if labels is None:
@@ -132,13 +132,13 @@ def classification_summary(y_true: Vector, y_pred: Vector, class_names: Optional
     # Determine the width for the first label column and the individual cells
     prediction = 'Prediction'
     actual = 'Actual'
-    labelWidth = max(len(s) for s in labels)
-    cmWidth = max(*(len(s) for row in cm for s in row), labelWidth) + 1
-    labelWidth = max(labelWidth, len(actual))
+    label_width = max(len(s) for s in labels)
+    cm_width = max(*(len(s) for row in cm for s in row), label_width) + 1
+    label_width = max(label_width, len(actual))
 
     # Construct the format statements
-    fmt1 = f'{{:>{labelWidth}}}'
-    fmt2 = f'{{:>{cmWidth}}}' * len(labels)
+    fmt1 = f'{{:>{label_width}}}'
+    fmt2 = f'{{:>{cm_width}}}' * len(labels)
 
     # And print the confusion matrix
     print(fmt1.format(' ') + ' ' + prediction)
