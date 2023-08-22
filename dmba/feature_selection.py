@@ -53,8 +53,10 @@ def exhaustive_search(variables: list[str], train_model: TrainModel,
     return result
 
 
-def backward_elimination(variables: Iterable[str], train_model: TrainModel, score_model: ScoreModel, *,
-                         verbose: bool = False) -> tuple[Model, list[str]]:
+def backward_elimination(
+    variables: Iterable[str], train_model: TrainModel, score_model: ScoreModel,
+    *, verbose: bool = False
+) -> tuple[Model, list[str]]:
     """ Variable selection using backward elimination
 
     Input:
