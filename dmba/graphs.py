@@ -121,7 +121,7 @@ def plot_decision_tree(decision_tree: Any, *, feature_names: Optional[list[str]]
 # Taken from scikit-learn documentation
 
 
-def text_decision_tree(decision_tree: Any, indent: str = '  ', as_ratio: bool = True) -> str:  # noqa: FBT
+def text_decision_tree(decision_tree: Any, indent: str = '  ', *, as_ratio: bool = True) -> str:  # noqa: FBT
     """ Create a text representation of the scikit-learn decision tree
 
     Input:
