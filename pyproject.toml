@@ -26,6 +26,15 @@ dependencies = [
 ]
 dynamic = ["version"]
 
+[project.optional-dependencies]
+test = [
+    "flake8",
+    "isort",
+    "mypy",
+    "pytest",
+    "ruff",
+]
+
 [project.urls]
 Repository = "https://github.com/polars-stats/dmba"
 
@@ -86,5 +95,5 @@ target-version = "py311"
 minversion = "7.3"
 addopts = "-rP"
 testpaths = [
-    "src"
+    "tests"
 ]
