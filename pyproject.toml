@@ -83,7 +83,7 @@ target-version = "py311"
 "*/tests/*.py" = ["S1", "FBT", "PLR"]
 
 [tool.pytest.ini_options]
-minversion = "7.0"
+minversion = "7.3"
 addopts = "-rP"
 testpaths = [
     "src"
