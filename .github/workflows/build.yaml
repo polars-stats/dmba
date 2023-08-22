@@ -36,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: pip3 install ruff
       - name: Run ruff
-        run: python3 -m ruff src
+        run: python3 -m ruff dmba
 
   mypy:
     runs-on: ubuntu-latest
@@ -52,4 +52,4 @@ jobs:
         # types-Deprecated types-PyYAML types-requests types-simplejson isort types-pytz types-python-dateutil types-orjson
       
       - name: Run mypy cdd
-        run: python3 -m mypy src
+        run: python3 -m mypy dmba
