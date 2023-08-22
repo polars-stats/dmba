@@ -19,7 +19,7 @@ jobs:
       - run: sudo apt install -y graphviz
       - run: python3 --version
       - run: pip3 install --upgrade pip 
-      - run: pip3 install .
+      - run: pip3 install -e .
       - run: pip3 install pytest
       - run: python3 -m pytest -p no:cacheprovider
       - run: pip3 install ipython
