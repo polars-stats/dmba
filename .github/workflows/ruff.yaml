@@ -8,9 +8,9 @@ jobs:
     steps:
       - name: actions/checkout@v3
         uses: actions/checkout@v3
-      - name: actions/install
+      - name: .github/actions/install
         uses: ./.github/actions/install
+      - run: pip3 install ruff
       - name: ruff
-        run: |
-          pip3 install ruff 
+        run: | 
           python3 -m ruff dmba
