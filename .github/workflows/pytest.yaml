@@ -11,11 +11,9 @@ jobs:
     name: Python ${{ matrix.python-version }} sample
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
+      - name: actions/install
+        uses: ./.github/actions/install
       - run: sudo apt install -y graphviz
-      - run: pip3 install --upgrade pip 
-      - run: pip3 install .
+      - name: pip3-install
       - run: pip3 install pytest
       - run: python3 -m pytest -p no:cacheprovider
