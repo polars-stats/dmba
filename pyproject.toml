@@ -17,6 +17,7 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
+    "jax[cpu]",
     "graphviz",
     "matplotlib",
     "numpy",
