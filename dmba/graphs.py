@@ -5,28 +5,28 @@ Applications in Python"
 (c) 2019-2023 Galit Shmueli, Peter C. Bruce, Peter Gedeck
 """
 
-import io
-import os
-from tempfile import TemporaryDirectory
-from typing import Any, Optional
+# import io
+# import os
+# from tempfile import TemporaryDirectory
+# from typing import Any, Optional
 
-import jax.numpy as np
-import polars as pl
-from polars import DataFrame, Series
-from sklearn.tree import export_graphviz
+# import jax.numpy as np
+# import polars as pl
+# from polars import DataFrame, Series
+# from sklearn.tree import export_graphviz
 
 
-try:
-    import graphviz
-    HAS_GRAPHVIZ = True
-except ImportError:
-    HAS_GRAPHVIZ = False
+# try:
+#     import graphviz
+#     HAS_GRAPHVIZ = True
+# except ImportError:
+#     HAS_GRAPHVIZ = False
 
-try:
-    from IPython.display import Image
-    HAS_IMAGE = True
-except ImportError:
-    HAS_IMAGE = False
+# try:
+#     from IPython.display import Image
+#     HAS_IMAGE = True
+# except ImportError:
+#     HAS_IMAGE = False
 
 
 # def lift_chart(
