@@ -43,12 +43,14 @@ def lift_chart(
     """
     # group the sorted predictions into 10 roughly equal groups and calculate the mean
     name = predicted.name
-    mean_percentile = predicted \
-        .qcut(10, labels=range(1, 11)) \
-        .drop('break_point') \
-        .groupby('category') \
-        .agg(pl.col(name).mean()) \
+    mean_percentile = (
+        predicted
+        .qcut(10, labels=range(1, 11))
+        .drop('break_point')  # type: ignore
+        .groupby('category')
+        .agg(pl.col(name).mean())
         .select(name)
+    )
     # divide by the mean prediction to get the mean response
     mean_response = mean_percentile / predicted.mean()  # type: ignore
 
