@@ -10,5 +10,7 @@ jobs:
         uses: actions/checkout@v3
       - name: actions/install
         uses: ./.github/actions/install
-      - run: pip3 install mypy
-      - run: python3 -m mypy dmba
+      - name: pip3-install
+        run: |
+          pip3 install mypy
+          python3 -m mypy dmba
