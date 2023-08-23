@@ -15,5 +15,5 @@ jobs:
         uses: ./.github/actions/install
       - run: sudo apt install -y graphviz
       - name: pip3-install
-      - run: pip3 install pytest
+        run: pip3 install pytest
       - run: python3 -m pytest -p no:cacheprovider
