@@ -1,0 +1,21 @@
+name: build
+
+on: [push, workflow_dispatch]
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11']
+    name: Python ${{ matrix.python-version }} sample
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: sudo apt install -y graphviz
+      - run: pip3 install --upgrade pip 
+      - run: pip3 install .
+      - run: pip3 install pytest
+      - run: python3 -m pytest -p no:cacheprovider
