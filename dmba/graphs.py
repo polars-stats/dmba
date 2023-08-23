@@ -148,7 +148,7 @@ def text_decision_tree(decision_tree: Any, indent: str = '  ', *,
     threshold = decision_tree.tree_.threshold
     node_value = decision_tree.tree_.value
 
-    node_depth = np.zeros(shape=n_nodes, dtype=np.int64)
+    node_depth = np.zeros(shape=n_nodes, dtype=np.int32)
     is_leaves = np.zeros(shape=n_nodes, dtype=bool)
     stack = [(0, -1)]  # seed is the root node id and its parent depth
     while len(stack) > 0:
