@@ -20,10 +20,8 @@ dependencies = [
     "jax[cpu]",
     "graphviz",
     "matplotlib",
-    "numpy",
     "polars",
     "scikit-learn",
-    "scipy",
 ]
 dynamic = ["version"]
 
