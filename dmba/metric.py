@@ -8,7 +8,7 @@ Applications in Python"
 import math
 from typing import Any, Optional
 
-import numpy as np
+import jax.numpy as np
 from sklearn.metrics import accuracy_score, confusion_matrix, mean_squared_error, r2_score
 
 Vector = Any
