@@ -6,13 +6,13 @@ Applications in Python"
 """
 
 from polars import DataFrame
-import scipy.sparse as sp
+from jax.experimental import sparse
 from sklearn.feature_extraction.text import CountVectorizer
 
 
 def print_term_document_matrix(
         count_vect: CountVectorizer,  # noqa: ARG001
-        counts: sp.spmatrix) -> None:
+        counts: sparse.BCOO) -> None:
     """ Print term-document matrix created by the CountVectorizer
     Input:
         count_vect: scikit-learn Count vectorizer
@@ -20,4 +20,4 @@ def print_term_document_matrix(
     """
     shape = counts.shape
     columns = [f'S{i}' for i in range(1, shape[0] + 1)]
-    print(DataFrame(data=counts.toarray().transpose(), schema=columns))
+    print(DataFrame(data=counts.todense().transpose(), schema=columns))
