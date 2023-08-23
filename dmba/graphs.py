@@ -11,7 +11,7 @@ from tempfile import TemporaryDirectory
 from typing import Any, Optional
 
 import jax.numpy as np
-import matplotlib.plot as plt
+import matplotlib.pylab as plt
 import polars as pl
 from polars import DataFrame, Series
 from sklearn.tree import export_graphviz
@@ -42,11 +42,15 @@ def lift_chart(
         label_bars (optional): set to False to avoid mean response labels on bar chart
     """
     # group the sorted predictions into 10 roughly equal groups and calculate the mean
-    breaks = [int(10 * i / len(predicted)) for i in range(len(predicted))]
-    mean_percentile = predicted.cut(breaks).mean()
+    name = predicted.name
+    mean_percentile = predicted \
+        .qcut(10, labels=range(1, 11)) \
+        .drop('break_point') \
+        .groupby('category') \
+        .agg(pl.col(name).mean()) \
+        .select(name)
     # divide by the mean prediction to get the mean response
     mean_response = mean_percentile / predicted.mean()  # type: ignore
-    mean_response.index = (mean_response.index + 1) * 10
 
     fig, ax = plt.subplots(figsize=figsize)
     ax.bar(mean_response, color='C0')
