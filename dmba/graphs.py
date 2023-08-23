@@ -45,7 +45,7 @@ def lift_chart(
     name = predicted.name
     mean_percentile = (
         predicted
-        .qcut(10, labels=range(1, 11))
+        .qcut(10)
         .drop('break_point')  # type: ignore
         .groupby('category')
         .agg(pl.col(name).mean())
