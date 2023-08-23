@@ -6,7 +6,8 @@ jobs:
   ruff:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: actions/checkout@v3
+        uses: actions/checkout@v3
       - name: actions/install
         uses: ./.github/actions/install
       - name: ruff
