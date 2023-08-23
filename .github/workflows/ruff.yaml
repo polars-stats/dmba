@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: actions/checkout@v3
         uses: actions/checkout@v3
-      - name: .github/actions/install
+      - name: actions/install
         uses: ./.github/actions/install
       - name: ruff
         run: |
